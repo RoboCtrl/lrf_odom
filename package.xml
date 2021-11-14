@@ -1,0 +1,24 @@
+<package format="2">
+	<name>lrf_odom</name>
+	<version>0.0.1</version>
+	<description>provides a node that uses only laser range finder (i.e. 2D laser scanner) messages to compute
+	the egomotion od the sensor and publishes the motion as odometry messages.</description>
+	<maintainer email="JDichtl@lincoln.ac.uk">Johann Dichtl</maintainer>
+
+	<url>none yet</url>
+	<author>Johann Dichtl</author>
+
+	<license>LGPLv3</license><!-- same as the CSM library -->
+
+	<buildtool_depend>catkin</buildtool_depend>
+	
+	<depend>csm</depend>
+	<depend>roscpp</depend>
+	<depend>tf</depend>
+	<depend>std_msgs</depend>
+	<depend>sensor_msgs</depend>
+	<depend>geometry_msgs</depend>
+	
+	<exec_depend>message_runtime</exec_depend>
+
+</package>

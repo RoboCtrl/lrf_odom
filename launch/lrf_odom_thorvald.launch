@@ -1,0 +1,27 @@
+<launch>
+	<!-- This is an example launch file for the Thorvald mobile robot platform. this launch file starts two lrf_odom_node nodes. -->
+
+	<!-- ego-motion estimater for front and back laser scanners -->
+	<node pkg="lrf_odom" type="lrf_odom_node" name="scan_odom_front" output="screen">
+		<param name="scan_topic" value="/scanner_front/scan" />
+		<param name="odom_topic" value="odom_front_scan" />
+		<param name="odom_frame" value="odom_front_scan" />
+		<param name="odom_child_frame" value="odom_front_base" />
+	</node>
+
+	<node pkg="lrf_odom" type="lrf_odom_node" name="scan_odom_back" output="screen">
+		<param name="scan_topic" value="/scanner_back/scan" />
+		<param name="odom_topic" value="odom_back_scan" />
+		<param name="odom_frame" value="odom_back_scan" />
+		<param name="odom_child_frame" value="odom_back_base" />
+	</node>
+	
+	
+	<!-- static transformations to the 'map' frame for the published odometry topics from the ego-motion estimater above -->
+	<node pkg="tf" type="static_transform_publisher" name="tf_pub_back_odom"
+			args="0 0 0  0 0 0  map odom_back_scan  1000" />
+
+	<node pkg="tf" type="static_transform_publisher" name="tf_pub_front_odom"
+		args="0 0 0  0 0 0  map odom_front_scan  1000" />
+
+</launch>
